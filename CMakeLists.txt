@@ -18,7 +18,8 @@ include_directories("inc/")
 link_directories("ext/SFML/lib/")	
 
 add_executable("${PROJECT_NAME}" main.cpp
-		
+					       Func.hpp
+					       Source.cpp
 )
 											
 target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
@@ -35,5 +36,4 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  vorbisfile
 						  vorbis
 						  ogg)
-file(COPY "assets/robert.png" DESTINATION "/")
-file(COPY "assets/robert_move1.png" DESTINATION "/")
+file(COPY "assets/roberto.png" DESTINATION "/")
