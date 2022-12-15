@@ -36,3 +36,4 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  vorbis
 						  ogg)
 file(COPY "assets/robert.png" DESTINATION "/")
+file(COPY "assets/robert_move1.png" DESTINATION "/")
