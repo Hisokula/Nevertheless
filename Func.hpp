@@ -4,7 +4,7 @@
 namespace esp
 {
 	
-	void Controls(sf::Sprite Robert, float* CurrentFrame, float* time);
+	void Controls(sf::Sprite* Robert, sf::Texture* robert_texture, sf::Texture* rev_robert_texture, float* CurrentFrame, float* time);
 
 
 }
