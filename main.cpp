@@ -12,6 +12,9 @@ int main()
     sf::Texture robert_texture;
     robert_texture.loadFromFile("roberto.png");
 
+    sf::Texture rev_robert_texture;
+    rev_robert_texture.loadFromFile("robertorev.png");
+
     sf::Sprite Robert;
     Robert.setTexture(robert_texture);
     Robert.setPosition(960, 540);
@@ -39,13 +42,16 @@ int main()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
+            Robert.setTexture(rev_robert_texture);
+            Robert.setTextureRect(sf::IntRect(0, 0, 256, 256));
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
             {
                 Robert.move(-0.2 * time / 225, 0);
                 CurrentFrame += 0.05;
                 if (CurrentFrame > 5)
                     CurrentFrame -= 5;
-                Robert.setTextureRect(sf::IntRect(256 * int(CurrentFrame) + 256, 0, -256, 256));
+                Robert.setTextureRect(sf::IntRect(256 * int(CurrentFrame), 0, 256, 256));
             }
             else
             {
@@ -53,12 +59,14 @@ int main()
                 CurrentFrame += 0.03;
                 if (CurrentFrame > 5)
                     CurrentFrame -= 5;
-                Robert.setTextureRect(sf::IntRect(256 * int(CurrentFrame) + 256, 0, -256, 256));
+                Robert.setTextureRect(sf::IntRect(256 * int(CurrentFrame), 0, 256, 256));
             }
 
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
+            Robert.setTexture(robert_texture);
+            Robert.setTextureRect(sf::IntRect(0, 0, 256, 256));
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
             {
                 Robert.move(0.2 * time / 225, 0);
