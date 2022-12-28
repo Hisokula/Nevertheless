@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15) # Проверка версии CMake.
 									 # Если версия установленой программы
 									 # старее указаной, произайдёт аварийный выход.
 
-set(PROJECT_NAME sfml_sample)				 # имя проекта		 
+set(PROJECT_NAME Game)				 # имя проекта		 
 project("${PROJECT_NAME}")
 
 
@@ -19,6 +19,7 @@ link_directories("ext/SFML/lib/")
 
 add_executable("${PROJECT_NAME}" main.cpp
 					       Func.hpp
+					       View.hpp
 					       Source.cpp
 )
 											
@@ -38,3 +39,4 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  ogg)
 file(COPY "assets/roberto.png" DESTINATION "/")
 file(COPY "assets/robertorev.png" DESTINATION "/")
+file(COPY "assets/box.png" DESTINATION "/")
