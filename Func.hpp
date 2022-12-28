@@ -49,23 +49,6 @@ namespace esp
 
         }
 
-        /*void CoordUpd(float* time)
-        {
-            switch (m_direction)
-            {
-            case 0: m_dx = m_speed; m_dy = 0; break;
-            case 1: m_dx = -m_speed; m_dy = 0; break;
-            case 2: m_dx = 0; m_dy = m_speed; break;
-            case 3: m_dx = 0; m_dy = -m_speed; break;
-            }
-
-            PlayerCoordX += (m_dx * (*time));
-            PlayerCoordY += (m_dy * (*time));
-
-            m_speed = 0;
-
-            //m_Robert->setPosition(PlayerCoordX, PlayerCoordY);
-        }*/
 
         float GetPlayerCoordX()
         {
@@ -92,9 +75,7 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         ((*CurrentFrame)) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.2 * (*time) / 225;
 
-                    m_dx = -0.2;
                 }
                 else
                 {
@@ -103,16 +84,8 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.1 * (*time) / 300;
 
-                    m_dx = -0.1;
                 }
-
-                m_direction = 1;
-
-                //CoordUpd(time);
-
-                espv::GetPlayerCoordForView(GetPlayerCoordX(), GetPlayerCoordY());
 
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -126,9 +99,7 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.2 * (*time) / 225;
 
-                    m_dx = 0.2;
                 }
                 else
                 {
@@ -137,16 +108,8 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.1 * (*time) / 300;
 
-                    m_dx = 0.1;
                 }
-
-                m_direction = 0;
-
-                //CoordUpd(time);
-
-                espv::GetPlayerCoordForView(GetPlayerCoordX(), GetPlayerCoordY());
 
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -158,9 +121,6 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.2 * (*time) / 225;
-
-                    m_dy = 0.2;
                 }
                 else
                 {
@@ -169,16 +129,7 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.1 * (*time) / 300;
-
-                    m_dy = 0.1;
                 }
-
-                m_direction = 3;
-
-                //CoordUpd(time);
-
-                espv::GetPlayerCoordForView(GetPlayerCoordX(), GetPlayerCoordY());
 
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -190,9 +141,6 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.2 * (*time) / 225;
-
-                    m_dy = -0.2;
                 }
 
                 else
@@ -202,16 +150,8 @@ namespace esp
                     if ((*CurrentFrame) > 5)
                         (*CurrentFrame) -= 5;
                     (*Robert).setTextureRect(sf::IntRect(256 * int((*CurrentFrame)), 0, 256, 256));
-                    m_speed = 0.1 * (*time) / 300;
-
-                    m_dy = -0.1;
                 }
 
-                m_direction = 2;
-
-                //CoordUpd(time);
-
-                espv::GetPlayerCoordForView(GetPlayerCoordX(), GetPlayerCoordY());
 
             }
         }

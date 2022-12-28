@@ -1,7 +1,6 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "Func.hpp"
 #include "Map.hpp"
-#include "View.hpp"
 
 
 int DimensionScreenX = 1920;
@@ -52,7 +51,6 @@ int main()
     sf::View view(sf::FloatRect(0, 0, DimensionScreenX, DimensionScreenY));
 
 
-
     //клок клок
     sf::Clock clock;
 
@@ -74,6 +72,14 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseWheelMoved)
+            {
+                if (event.mouseWheel.delta == -1)
+                    view.setSize(DimensionScreenX += 10, DimensionScreenY += 10);
+                if (event.mouseWheel.delta == 1)
+                    view.setSize(DimensionScreenX -= 10, DimensionScreenY -= 10);
+            }
         }
 
         //разберись с скроллом
