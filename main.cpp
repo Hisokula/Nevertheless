@@ -125,6 +125,9 @@ int main()
         Box.setTexture(box_texture);
         Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
 
+        sf::Texture boxboxbox;
+        boxboxbox.loadFromFile("boxboxbox.png");
+
 
         sf::Vector2f BoxPosition(0, 0);
 
@@ -220,18 +223,27 @@ int main()
             {
                 BOX.SetPossession(1);
             }
+
+            //Robert.setTexture(robert_texture);
         }
+
+        //Robert.setPosition(BoxPosition.x, BoxPosition.y);
 
         if (BOX.GetPossession() == 1)
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             {
                 BOX.SetPossession(0);
+                Box.setPosition(PLAYER.GetPlayerCoordX(), PLAYER.GetPlayerCoordY());
+                Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
             }
-            BOX.Controls(&time);
+            //BOX.Controls(&time);
+            Robert.setTexture(boxboxbox);
+            Box.setTextureRect(sf::IntRect(200, 200, 201, 201));
+            //Box.setTexture;
         }
 
-        PLAYER.InsideTheBox(BOX.GetPossession(), &Box, &Robert);
+        //PLAYER.InsideTheBox(BOX.GetPossession(), &Box, &Robert);
 
         //view.setCenter(PLAYER.GetPlayerCoordX(), PLAYER.GetPlayerCoordY());
 

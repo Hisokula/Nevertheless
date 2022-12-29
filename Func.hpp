@@ -153,13 +153,17 @@ namespace esp
             }
         }
 
-        void InsideTheBox(bool b, sf::Sprite* box, sf::Sprite* Robert)
+        /*void InsideTheBox(bool b, sf::Sprite* box, sf::Sprite* Robert)
         {
             if (b == 1)
             {
                 std::swap(box, Robert);
             }
-        }
+            else
+            {
+                m_Robert = Robert;
+            }
+        }*/
 
     };
 
@@ -201,7 +205,7 @@ namespace esp
         {
             return possession;
         }
-        void Controls(float* time)
+        /*void Controls(float* time)
         {
 
             if (possession == 1)
@@ -227,7 +231,7 @@ namespace esp
             }
             
             
-        }
+        }*/
 
 
     };

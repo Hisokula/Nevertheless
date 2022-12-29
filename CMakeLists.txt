@@ -40,3 +40,5 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 file(COPY "assets/roberto.png" DESTINATION "/")
 file(COPY "assets/robertorev.png" DESTINATION "/")
 file(COPY "assets/box.png" DESTINATION "/")
+file(COPY "assets/fon.png" DESTINATION "/")
+file(COPY "assets/boxboxbox.png" DESTINATION "/")
