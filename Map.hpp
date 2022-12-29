@@ -17,7 +17,7 @@ const sf::String TileMap[H] =
     "B                                      BBBBBBBBBB",
     "B                                      BBBBBBBBBB",
     "B                                      BBBBBBBBBB",
-    "BP  X               T                  BBBBBBBBBB",
+    "BP      X           T                  BBBBBBBBBB",
     "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
     "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
     "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",

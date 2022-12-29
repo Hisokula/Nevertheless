@@ -38,9 +38,16 @@ int main()
     Robert.setPosition(960, 540);
     Robert.setTextureRect(sf::IntRect(0, 0, 256, 256));
 
+    //BOX
+    sf::Texture box_texture;
+    box_texture.loadFromFile("box.png");
+    sf::Sprite Box;
+    Box.setTexture(box_texture);
+    Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
+    Box.setPosition(800, 1526);
+
 
     sf::View view(sf::FloatRect(0, 0, DimensionScreenX, DimensionScreenY));
-
 
     //клок клок
     sf::Clock clock;
@@ -115,24 +122,20 @@ int main()
 
         view.reset(sf::FloatRect(PositionOnScreen.x, PositionOnScreen.y, DimensionScreenX, DimensionScreenY));
 
-        //черный выглядел стильно, но это тоже ничего
+        //
         window.clear(sf::Color::White);
 
-        //BOX
-        sf::Texture box_texture;
-        box_texture.loadFromFile("box.png");
-        sf::Sprite Box;
-        Box.setTexture(box_texture);
-        Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
+
 
         sf::Texture boxboxbox;
         boxboxbox.loadFromFile("boxboxbox.png");
 
+        sf::FloatRect Rect;
 
         sf::Vector2f BoxPosition(0, 0);
 
         bool boxflag = 0;
-        //всё ещё борьба с ТаЙлМаПоМ
+
         for (int i = 0; i < H + 10; i++)
         {
             for (int j = 0; j < W + 10; j++)
@@ -154,8 +157,6 @@ int main()
                     }
                     if (TileMap[i][j] == 'X')
                     {
-                        Box.setPosition(j * 150 + 10, i * 150 + 20);/////////// спрайт ящика!!!!!!!!
-
                         boxflag = 1;
 
                         BoxPosition.x = j * 150 + 10;
@@ -164,7 +165,7 @@ int main()
                     if (TileMap[i][j] == 'P')
                     {
                         rectangle.setFillColor(sf::Color::Red);
-                        //Box.setPosition(j * 150 + 5, i * 150 + 20);
+                        //Rect = rectangle;
                     }
 
                     if (TileMap[i][j] == ' ') continue;
@@ -182,8 +183,6 @@ int main()
         }
 
 
-
-
         //я создала рабочий класс, swag
         //ура, пролетариат
         esp::PlayerRobert PLAYER(&Robert, &robert_texture, &rev_robert_texture);
@@ -195,53 +194,47 @@ int main()
         BOX.SetBoxCoordX(BoxPosition.x);
         BOX.SetBoxCoordY(BoxPosition.y);
 
-        /*if ((abs(SpritePosition.x - BoxPosition.x) <= 100) || (abs(SpritePosition.y - BoxPosition.y) <= 100))
+
+        sf::FloatRect RobertBounds = Robert.getGlobalBounds();
+        sf::FloatRect BoxBounds = Box.getGlobalBounds();
+
+        if (RobertBounds.intersects(BoxBounds))
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
                 BOX.SetPossession(1);
-                Robert.setTextureRect(sf::IntRect(0, 0, 1, 1));
-                //BOX.Controls(&time);
             }
-
         }
 
-        if (BOX.GetPossession() == 1)
-        {
-            BOX.Controls(&time);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            {
-                BOX.SetPossession(0);
-                Robert.setTextureRect(sf::IntRect(0, 0, 256, 256));
-            }
 
-        }*/
-
-        if ((abs(SpritePosition.x - BoxPosition.x) <= 100) || (abs(SpritePosition.y - BoxPosition.y) <= 100))
+       /* if ((abs(SpritePosition.x - BoxPosition.x) <= 100) || (abs(SpritePosition.y - BoxPosition.y) <= 100))
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
                 BOX.SetPossession(1);
             }
 
-            //Robert.setTexture(robert_texture);
-        }
+        */
 
-        //Robert.setPosition(BoxPosition.x, BoxPosition.y);
+        /*sf::Texture empty;
+        empty.loadFromFile("empty.png")*/
+
 
         if (BOX.GetPossession() == 1)
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-            {
-                BOX.SetPossession(0);
-                Box.setPosition(PLAYER.GetPlayerCoordX(), PLAYER.GetPlayerCoordY());
-                Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
-            }
-            //BOX.Controls(&time);
             Robert.setTexture(boxboxbox);
             Box.setTextureRect(sf::IntRect(200, 200, 201, 201));
-            //Box.setTexture;
+            Box.setPosition(Robert.getPosition().x, Robert.getPosition().y);
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+            {
+                BOX.SetPossession(0);
+                Box.setTextureRect(sf::IntRect(0, 0, 140, 130));
+            }
+
         }
+        std::cout << "R" << Robert.getPosition().x << " " << Robert.getPosition().y << std::endl;
+        std::cout << "B" << Box.getPosition().x << " " << Box.getPosition().y << std::endl;
 
         //PLAYER.InsideTheBox(BOX.GetPossession(), &Box, &Robert);
 
