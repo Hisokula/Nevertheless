@@ -8,9 +8,7 @@ namespace esp
 
     class Box;
 	
-	//void Controls(sf::Sprite* Robert, sf::Texture* robert_texture, sf::Texture* rev_robert_texture, float* CurrentFrame, float* time);
 
-    //он прекрасен(Controls не в счёт, просто не открывайте)
     class PlayerRobert
     {
     private:
@@ -153,18 +151,6 @@ namespace esp
             }
         }
 
-        /*void InsideTheBox(bool b, sf::Sprite* box, sf::Sprite* Robert)
-        {
-            if (b == 1)
-            {
-                std::swap(box, Robert);
-            }
-            else
-            {
-                m_Robert = Robert;
-            }
-        }*/
-
     };
 
     class Box
@@ -205,33 +191,17 @@ namespace esp
         {
             return possession;
         }
-        /*void Fall(float* time)
+        void Fall(float* time)
         {
 
-            if (possession == 1)
+            if ((possession == 0) && (BoxCoordY <= 1800))
             {
                 sf::Sprite* Box = m_Box;
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                {
-                    (*Box).move(-0.1 * (*time) / 300, 0);
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                {
-                    (*Box).move(0.1 * (*time) / 300, 0);
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                {
-                    (*Box).move(0, -0.1 * (*time) / 300);
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                {
-                    (*Box).move(0, 0.1 * (*time) / 300);
-                }
             }
             
             
-        }*/
+        }
 
 
     };

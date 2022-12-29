@@ -17,28 +17,27 @@ sf::View view;
 
 int main()
 {
-    //рендер виндова + установка ограничения на фпс
+
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Nevertheless works!");
     window.setFramerateLimit(120);
 
     view.reset(sf::FloatRect(0, 0, 1920, 1080));
 
 
-    //сет текстур для Роберта(основной и реверснутой)
+
     sf::Texture robert_texture;
     robert_texture.loadFromFile("roberto.png");
 
     sf::Texture rev_robert_texture;
     rev_robert_texture.loadFromFile("robertorev.png");
 
-    //создание спрайта Роберта
-    //желательно запихнуть в класс
+
     sf::Sprite Robert;
     Robert.setTexture(robert_texture);
     Robert.setPosition(960, 540);
     Robert.setTextureRect(sf::IntRect(0, 0, 256, 256));
 
-    //BOX
+
     sf::Texture box_texture;
     box_texture.loadFromFile("box.png");
     sf::Sprite Box;
@@ -49,22 +48,22 @@ int main()
 
     sf::View view(sf::FloatRect(0, 0, DimensionScreenX, DimensionScreenY));
 
-    //клок клок
+
     sf::Clock clock;
 
-    sf::RectangleShape rectangle(sf::Vector2f(150, 150)); //борюсь с картой, это к ней относится
+    sf::RectangleShape rectangle(sf::Vector2f(150, 150));
 
-    //это важно это надо
+
     float CurrentFrame = 0;
 
-    //время для виндова
+
     while (window.isOpen())
     {
-        //тут понятно, снова клок клок
+
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
 
-        //дабы не создать вечный двигатель
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -80,12 +79,7 @@ int main()
             }
         }
 
-        //разберись с скроллом
-        sf::FloatRect rect;
-        rect = sf::FloatRect(0, 0, 256, 256);
 
-
-        //window.setView(view);
         PositionOnScreen.x = Robert.getPosition().x + RobertDimensionX - (DimensionScreenX / 2);
         PositionOnScreen.y = Robert.getPosition().y + RobertDimensionY - (DimensionScreenY / 2);
 
@@ -122,7 +116,7 @@ int main()
 
         view.reset(sf::FloatRect(PositionOnScreen.x, PositionOnScreen.y, DimensionScreenX, DimensionScreenY));
 
-        //
+
         window.clear(sf::Color::White);
 
 
@@ -130,9 +124,12 @@ int main()
         sf::Texture boxboxbox;
         boxboxbox.loadFromFile("boxboxbox.png");
 
-        sf::FloatRect Rect;
 
         sf::Vector2f BoxPosition(0, 0);
+
+        sf::Sprite RedPusher;
+
+
 
         bool boxflag = 0;
 
@@ -164,8 +161,10 @@ int main()
                     }
                     if (TileMap[i][j] == 'P')
                     {
+                        
                         rectangle.setFillColor(sf::Color::Red);
-                        //Rect = rectangle;
+                        RedPusher.setPosition(i * 150, j * 150);
+
                     }
 
                     if (TileMap[i][j] == ' ') continue;
@@ -183,8 +182,7 @@ int main()
         }
 
 
-        //я создала рабочий класс, swag
-        //ура, пролетариат
+
         esp::PlayerRobert PLAYER(&Robert, &robert_texture, &rev_robert_texture);
         PLAYER.Controls(&robert_texture, &rev_robert_texture, &CurrentFrame, &time);
         PLAYER.CoordUpd(&time);
@@ -206,20 +204,6 @@ int main()
             }
         }
 
-
-       /* if ((abs(SpritePosition.x - BoxPosition.x) <= 100) || (abs(SpritePosition.y - BoxPosition.y) <= 100))
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-            {
-                BOX.SetPossession(1);
-            }
-
-        */
-
-        /*sf::Texture empty;
-        empty.loadFromFile("empty.png")*/
-
-
         if (BOX.GetPossession() == 1)
         {
             Robert.setTexture(boxboxbox);
@@ -233,14 +217,30 @@ int main()
             }
 
         }
-        std::cout << "R" << Robert.getPosition().x << " " << Robert.getPosition().y << std::endl;
+
+        sf::FloatRect RedPusherBounds = RedPusher.getGlobalBounds();
+
+        if (BoxBounds.intersects(RedPusherBounds))
+        {
+            sf::Text text;
+            sf::Font font;
+            //font.loadFromFile();
+            //text.setFont(font);
+
+            text.setString("Hello world");
+            text.setCharacterSize(100);
+            text.setFillColor(sf::Color::Red);
+            window.draw(text);
+        }
+
+        std::cout << "R" << RedPusher.getPosition().x << " " << RedPusher.getPosition().y << std::endl;
         std::cout << "B" << Box.getPosition().x << " " << Box.getPosition().y << std::endl;
 
-        //PLAYER.InsideTheBox(BOX.GetPossession(), &Box, &Robert);
+        //BOX.Fall(&time);
 
-        //view.setCenter(PLAYER.GetPlayerCoordX(), PLAYER.GetPlayerCoordY());
 
-        //самое вкусное
+
+
         window.setView(view);
         window.draw(Box);
         window.draw(Robert);
