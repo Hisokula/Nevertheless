@@ -19,8 +19,8 @@ link_directories("ext/SFML/lib/")
 
 add_executable("${PROJECT_NAME}" main.cpp
 					       Func.hpp
-					       View.hpp
 					       Source.cpp
+                                                                   Map.hpp
 )
 											
 target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d

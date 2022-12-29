@@ -1,15 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include"View.hpp"
-
-namespace espv
-{
-    sf::View GetPlayerCoordForView(float x, float y);
-}
+#include <iostream>
 
 
 namespace esp
 {
+
+    class Box;
 	
 	//void Controls(sf::Sprite* Robert, sf::Texture* robert_texture, sf::Texture* rev_robert_texture, float* CurrentFrame, float* time);
 
@@ -156,53 +153,83 @@ namespace esp
             }
         }
 
+        void InsideTheBox(bool b, sf::Sprite* box, sf::Sprite* Robert)
+        {
+            if (b == 1)
+            {
+                std::swap(box, Robert);
+            }
+        }
+
     };
 
+    class Box
+    {
+    private:
+        sf::Sprite* m_Box;
+        sf::Texture* m_box_texture;
+
+        float BoxCoordX = 0;
+        float BoxCoordY = 0;
+
+        bool possession = 0;
+
+    public:
+
+        Box(sf::Sprite* box, sf::Texture* box_texture)
+        {
+            m_Box = box;
+            m_box_texture = box_texture;
+        }
+
+        void SetBoxCoordX(float x)
+        {
+            BoxCoordX = x;
+        }
+
+        void SetBoxCoordY(float y)
+        {
+            BoxCoordY = y;
+        }
+
+        void SetPossession(bool p)
+        {
+            possession = p;
+        }
+
+        bool GetPossession()
+        {
+            return possession;
+        }
+        void Controls(float* time)
+        {
+
+            if (possession == 1)
+            {
+                sf::Sprite* Box = m_Box;
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    (*Box).move(-0.1 * (*time) / 300, 0);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    (*Box).move(0.1 * (*time) / 300, 0);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                {
+                    (*Box).move(0, -0.1 * (*time) / 300);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                {
+                    (*Box).move(0, 0.1 * (*time) / 300);
+                }
+            }
+            
+            
+        }
+
+
+    };
 
 }
-/*
-class Robert
-	{
-	private:
-		// x_coord, y_coord -- координаты левого верхнего угла прямоугльника, в который заключён спрайт
-		float m_x_coord = 0;
-		float m_y_coord = 0;
-
-		// x_side_size, y_side_size -- стороны(соответственно ширина и высота)
-		float m_x_side_size = 0;
-		float m_y_side_size = 0;
-
-		// x_position, y_position -- координаты начальной позиции Роберта
-		float m_x_position = 0;
-		float m_y_position = 0;
-
-
-		void RobertOnScreen()
-		{
-			// звгрузка и задание текстуры спрайту Роберта
-			sf::Texture robert_texture;
-			robert_texture.loadFromFile("robert.png");
-
-			sf::Sprite RobertSprite;
-			RobertSprite.setTexture(robert_texture);
-
-			// задание начальной позиции Роберта и текстуры по прямоугольнику
-			RobertSprite.setPosition(m_x_position, m_y_position);
-			RobertSprite.setTextureRect(sf::IntRect(m_x_coord, m_y_coord, m_x_side_size, m_y_side_size));
-		}
-
-	public:
-
-		Robert(float x_coord, float y_coord, float x_side_size, float y_side_size, float x_position, float y_position);
-
-		void Robert::AddPlayer()
-		{
-
-		}
-
-
-
-	};
-
-	void Controls();
-*/

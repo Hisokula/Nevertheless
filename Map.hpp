@@ -2,21 +2,27 @@
 #include <SFML/Graphics.hpp>
 
 
-const int H = 12;
-const int W = 40;
+const int H = 18;
+const int W = 49;
 
 const sf::String TileMap[H] =
 {
-    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-    "B                                      B",
-    "B                                      B",
-    "B                                      B",
-    "B                                      B",
-    "B                                      B",
-    "B                                      B",
-    "BBBB                                   B",
-    "B  BB                                  B",
-    "B   BB                                 B",
-    "BP  XBB                                B",
-    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "B                                      BBBBBBBBBB",
+    "BP  X               T                  BBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
 };
