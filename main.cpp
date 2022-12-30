@@ -161,9 +161,8 @@ int main()
                     }
                     if (TileMap[i][j] == 'P')
                     {
-                        
+
                         rectangle.setFillColor(sf::Color::Red);
-                        RedPusher.setPosition(i * 150, j * 150);
 
                     }
 
@@ -176,12 +175,12 @@ int main()
                     }
                     boxflag = 0;
                 }
-                
+
 
             }
         }
 
-
+        RedPusher.setPosition(150, 1500);
 
         esp::PlayerRobert PLAYER(&Robert, &robert_texture, &rev_robert_texture);
         PLAYER.Controls(&robert_texture, &rev_robert_texture, &CurrentFrame, &time);
@@ -198,6 +197,8 @@ int main()
 
         if (RobertBounds.intersects(BoxBounds))
         {
+
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
                 BOX.SetPossession(1);
@@ -220,21 +221,32 @@ int main()
 
         sf::FloatRect RedPusherBounds = RedPusher.getGlobalBounds();
 
+        //(150 <= Box.getPosition().x <= 200)&&(1500 <= Box.getPosition().y <= 1550)
+
+        /*if (BOX.GetPossession() == 1)
+        {
+            if ((150 <= Robert.getPosition().x <= 180) && (1480 <= Robert.getPosition().y <= 1550))
+            {
+                std::cout << "Good job!";
+            }
+        }*/
+
         if (BoxBounds.intersects(RedPusherBounds))
         {
+           
+            std::cout << "Good job!";
             sf::Text text;
             sf::Font font;
             //font.loadFromFile();
             //text.setFont(font);
-
-            text.setString("Hello world");
+            //text.setString("Hello world");
             text.setCharacterSize(100);
             text.setFillColor(sf::Color::Red);
             window.draw(text);
         }
 
-        std::cout << "R" << RedPusher.getPosition().x << " " << RedPusher.getPosition().y << std::endl;
-        std::cout << "B" << Box.getPosition().x << " " << Box.getPosition().y << std::endl;
+        //std::cout << "R" << RedPusher.getPosition().x << " " << RedPusher.getPosition().y << std::endl;
+        //std::cout << "B" << Box.getPosition().x << " " << Box.getPosition().y << std::endl;
 
         //BOX.Fall(&time);
 
