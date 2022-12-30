@@ -219,8 +219,18 @@ int main()
 
         }
 
-        sf::FloatRect RedPusherBounds = RedPusher.getGlobalBounds();
 
+        sf::FloatRect RedPusherBounds;// = RedPusher.getGlobalBounds();
+
+        RedPusherBounds.left = Robert.getPosition().x;
+        RedPusherBounds.top = Robert.getPosition().y;
+        RedPusherBounds.width = 150;
+        RedPusherBounds.height = 150;
+        sf::FloatRect BoxRect;
+        BoxRect.left = BoxPosition.x;
+        BoxRect.top = BoxPosition.y;
+        BoxRect.width = 150;
+        BoxRect.height = 150;
         //(150 <= Box.getPosition().x <= 200)&&(1500 <= Box.getPosition().y <= 1550)
 
         /*if (BOX.GetPossession() == 1)
@@ -231,7 +241,7 @@ int main()
             }
         }*/
 
-        if (BoxBounds.intersects(RedPusherBounds))
+        if (BoxRect.intersects(RedPusherBounds))
         {
            
             std::cout << "Good job!";
